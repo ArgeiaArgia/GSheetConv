@@ -1,0 +1,88 @@
+.text-field {
+    flex-grow: 0;
+    text-overflow: ellipsis;
+    flex-shrink: 1;
+    overflow: hidden;
+}
+
+.divider {
+    flex-basis: 1px;
+    background-color: rgb(88, 88, 88);
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.column {
+    background-color: rgb(88, 88, 88);
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-width: 1.25px;
+    border-right-width: 1.25px;
+    border-bottom-width: 1.25px;
+    border-left-width: 1.25px;
+    border-left-color: rgb(48, 48, 48);
+    border-right-color: rgb(48, 48, 48);
+    border-top-color: rgb(48, 48, 48);
+    border-bottom-color: rgb(36, 36, 36);
+    color: rgb(238, 238, 238);
+    margin-top: 2px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    flex-grow: 1;
+    flex-basis: 75px;
+    -unity-text-align: upper-center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.row {
+    background-color: rgb(42, 42, 42);
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-width: 1.25px;
+    border-right-width: 1.25px;
+    border-bottom-width: 1.25px;
+    border-left-width: 1.25px;
+    border-left-color: rgb(33, 33, 33);
+    border-right-color: rgb(33, 33, 33);
+    border-top-color: rgb(13, 13, 13);
+    border-bottom-color: rgb(33, 33, 33);
+    color: rgb(166, 166, 166);
+    margin-top: 2px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    flex-grow: 1;
+    flex-basis: 75px;
+    -unity-text-align: upper-center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.key {
+    color: rgb(233, 226, 226);
+    background-color: rgb(64, 64, 64);
+    border-left-color: rgb(45, 45, 45);
+    border-right-color: rgb(45, 45, 45);
+    border-top-color: rgb(26, 26, 26);
+    border-bottom-color: rgb(45, 45, 45);
+}
+
+.cell-container {
+    flex-direction: row;
+}

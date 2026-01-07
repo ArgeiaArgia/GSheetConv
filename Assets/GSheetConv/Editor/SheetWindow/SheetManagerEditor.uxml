@@ -1,0 +1,19 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/GSheetConv/Editor/SheetWindow/SheetManagerEditor.uss?fileID=7433441132597879392&amp;guid=21a3cfa243b1d9c49bd75e486574b9b1&amp;type=3#SheetManagerEditor" />
+    <GSheetConv.Editor.SheetWindow.SplitView fixed-pane-initial-dimension="150">
+        <ui:VisualElement name="LeftPanel" style="flex-grow: 1;">
+            <ui:Button text="Add New Sheet" name="AddBtn" style="flex-basis: 25px;" />
+            <ui:ScrollView name="ItemView" style="margin-top: 5px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="RightPanel" style="flex-grow: 1;">
+            <ui:VisualElement name="TitleContainer" style="flex-direction: row; flex-basis: 30px;">
+                <ui:TextField placeholder-text="Title" name="TitleField" is-delayed="true" class="text-field" style="flex-grow: 1;" />
+                <ui:Button text="Update" name="UpdateBtn" />
+            </ui:VisualElement>
+            <ui:TextField placeholder-text="URL" name="URLField" readonly="true" class="text-field" />
+            <ui:VisualElement name="Divider" class="divider" />
+            <ui:TextField label="Key" placeholder-text="Key" name="KeyField" is-delayed="true" />
+            <ui:ScrollView name="PreviewContainer" style="flex-grow: 1; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
+        </ui:VisualElement>
+    </GSheetConv.Editor.SheetWindow.SplitView>
+</ui:UXML>

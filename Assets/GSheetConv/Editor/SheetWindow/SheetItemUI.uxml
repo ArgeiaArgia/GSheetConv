@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/GSheetConv/Editor/SheetItemUI.uss?fileID=7433441132597879392&amp;guid=a112ef1f761e75c4f9dceda382d7b845&amp;type=3#SheetItemUI" />
+    <ui:VisualElement name="SheetItem" class="sheet_item" style="border-left-color: rgb(196, 196, 196); border-right-color: rgb(196, 196, 196); border-top-color: rgb(196, 196, 196); border-bottom-color: rgb(196, 196, 196);">
+        <ui:Label text="Test" name="SheetName" class="item_name" />
+        <ui:Button text="X" name="DeleteBtn" class="delete_btn" />
+    </ui:VisualElement>
+</ui:UXML>

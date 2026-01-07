@@ -1,0 +1,18 @@
+{
+    "name": "GSheetConv.EditorAssembly",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6011e5105ef83334fa1af3bbd989c28d"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

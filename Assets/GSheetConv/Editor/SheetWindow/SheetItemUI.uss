@@ -1,0 +1,64 @@
+.sheet_item {
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-left-color: rgb(196, 196, 196);
+    border-right-color: rgb(196, 196, 196);
+    border-top-color: rgb(196, 196, 196);
+    border-bottom-color: rgb(196, 196, 196);
+    flex-basis: 40px;
+    background-color: rgb(56, 56, 56);
+    transition-timing-function: ease-out-cubic;
+    transition-duration: 0.25s;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.sheet_item:hover {
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-left-color: rgb(196, 196, 196);
+    border-right-color: rgb(196, 196, 196);
+    border-top-color: rgb(196, 196, 196);
+    border-bottom-color: rgb(196, 196, 196);
+    flex-basis: 40px;
+    background-color: rgb(80, 80, 80);
+}
+
+.delete_btn {
+    background-color: rgb(132, 67, 67);
+    transition-timing-function: ease-out-cubic;
+    transition-duration: 0.25s;
+}
+
+.delete_btn:hover {
+    background-color: rgb(122, 9, 26);
+}
+
+.item_name {
+    -unity-text-align: middle-left;
+    flex-grow: 1;
+    text-overflow: ellipsis;
+    flex-basis: 50px;
+    overflow: hidden;
+}
