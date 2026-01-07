@@ -38,6 +38,7 @@ public class SheetManagerEditor : EditorWindow
         m_DetailView = new SheetDetailView(rightPanel, setting);
         
         m_LeftPanel.SelectedCallback += m_DetailView.UpdateDetailView;
+        m_LeftPanel.RefreshRequested += m_DetailView.RefreshCurrentView;
         m_DetailView.OnItemNameChanged += m_LeftPanel.RefreshItemList;
     }
 

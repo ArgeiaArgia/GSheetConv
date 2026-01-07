@@ -86,3 +86,7 @@
 .cell-container {
     flex-direction: row;
 }
+
+.btn {
+    flex-basis: 25px;
+}

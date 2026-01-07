@@ -93,17 +93,16 @@ public class AddSheetWindow : EditorWindow
     private void OnAddButtonClicked()
     {
         string url = _urlField.text;
-        url = SheetDownloader.FormatGoogleSheetUrl(url);
         string title = _titleField.text;
         string keyName = _keyField.text;
 
-        var newCsvItem = CreateCSVItem(title, _urlField.text, keyName);
+        var newCsvItem = CreateCSVItem(title, url, keyName);
 
         setting.CSVList.AddCSVItem(newCsvItem);
         EditorUtility.SetDirty(setting.CSVList);
 
         OnAddSheet?.Invoke(newCsvItem);
-        
+
         this.Close();
     }
     
@@ -235,6 +234,11 @@ public class AddSheetWindow : EditorWindow
     private void OnDuplicateBtnClicked()
     {
         string title = _titleField.text;
+        if (setting == null)
+        {
+            Debug.LogError("Setting is null");
+            return;
+        }
         var list = setting.CSVList;
         _isTitleValid = true;
         foreach (var item in list.csvItems)

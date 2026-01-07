@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using GSheetConv.Editor.TableAssetInject;
 using GSheetConv.Runtime;
 using UnityEditor;
@@ -109,32 +110,7 @@ namespace GSheetConv.Editor.SheetWindow
         private async void HandleUpdate()
         {
             _updateButton.text = "Updating...";
-            var url = SheetDownloader.FormatGoogleSheetUrl(_currentCSVItem.url);
-            var result = await SheetDownloader.DownloadSheetAsync(url);
-            if (result != null)
-            {
-                var readRes = result.Split('\n');
-                var headers = readRes[0].Split(',');
-                _currentCSVItem.headers = new List<string>();
-                foreach (var h in headers)
-                {
-                    _currentCSVItem.headers.Add(h.ToUpper().Trim());
-                }
-                _currentCSVItem.rows = new List<string>();
-                for (int i = 1; i < readRes.Length; i++)
-                {
-                    if (!string.IsNullOrWhiteSpace(readRes[i]))
-                        _currentCSVItem.rows.Add(readRes[i]);
-                }
-                _currentCSVItem.SetKey(_currentCSVItem.keyName);
-                EditorUtility.SetDirty(_currentCSVItem);
-            }
-            else
-            {
-                EditorUtility.DisplayDialog("Error", "Failed to update the sheet. Please check the URL and try again.",
-                    "OK");
-            }
-
+            await SheetUpdateModule.Update(_currentCSVItem);
             _updateButton.text = "Update";
             _itemPreviewView.UpdatePreview(_currentCSVItem);
             TableDetectorModule.InjectAssets();
@@ -159,6 +135,14 @@ namespace GSheetConv.Editor.SheetWindow
         {
             _currentCSVItem = null;
             _root.style.display = DisplayStyle.None;
+        }
+
+        public void RefreshCurrentView()
+        {
+            if (_currentCSVItem != null)
+            {
+                UpdateDetailView(_currentCSVItem);
+            }
         }
     }
 }

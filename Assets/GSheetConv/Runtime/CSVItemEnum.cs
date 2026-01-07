@@ -3,6 +3,6 @@ namespace GSheetConv.Runtime
 {
     public enum CSVItemEnum
     {
-        END = 0
+        TTT = 1, TESTTTT = 2, END = 3
     }
 }

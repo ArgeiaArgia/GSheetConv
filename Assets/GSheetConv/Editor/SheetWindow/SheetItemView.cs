@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+using GSheetConv.Editor.TableAssetInject;
 using GSheetConv.Runtime;
 using UnityEditor;
 using UnityEngine;
@@ -15,22 +17,36 @@ namespace GSheetConv.Editor.SheetWindow
 
         private VisualTreeAsset _itemTemplate = default;
         private Button _addButton;
+        private Button _updateAllButton;
         private ScrollView _itemListView;
         private AddSheetWindow _addSheetWindow;
 
         private Dictionary<SheetItem, CSVItemSO> _sheetItems = new();
+        
         public Action<CSVItemSO> SelectedCallback;
+        public Action RefreshRequested;
 
         public SheetItemView(VisualElement leftPanel, VisualTreeAsset itemTemplate, SheetConvertSetting setting)
         {
             _itemTemplate = itemTemplate;
             _addButton = leftPanel.Q<Button>("AddBtn");
+            _updateAllButton = leftPanel.Q<Button>("UpdateAllBtn");
             _itemListView = leftPanel.Q<ScrollView>("ItemView");
             _setting = setting;
 
             RefreshItemList();
 
-            _addButton.clicked += OnAddButtonClicked;
+            _addButton.clicked += HandleAddButtonClicked;
+            _updateAllButton.clicked += HandleUpdateAllButtonClicked;
+        }
+
+        private async void HandleUpdateAllButtonClicked()
+        {
+            _updateAllButton.text = "Updating All...";
+            await Task.WhenAll(_setting.CSVList.csvItems.Select(item => SheetUpdateModule.Update(item)).ToArray());
+            _updateAllButton.text = "Update All";
+            TableDetectorModule.InjectAssets();
+            RefreshRequested?.Invoke();
         }
 
         public void RefreshItemList()
@@ -101,7 +117,7 @@ namespace GSheetConv.Editor.SheetWindow
             }
         }
 
-        private void OnAddButtonClicked()
+        private void HandleAddButtonClicked()
         {
             if (_addSheetWindow == null)
                 _addSheetWindow = ScriptableObject.CreateInstance<AddSheetWindow>();

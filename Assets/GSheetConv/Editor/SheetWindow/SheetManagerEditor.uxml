@@ -2,8 +2,9 @@
     <Style src="project://database/Assets/GSheetConv/Editor/SheetWindow/SheetManagerEditor.uss?fileID=7433441132597879392&amp;guid=21a3cfa243b1d9c49bd75e486574b9b1&amp;type=3#SheetManagerEditor" />
     <GSheetConv.Editor.SheetWindow.SplitView fixed-pane-initial-dimension="150">
         <ui:VisualElement name="LeftPanel" style="flex-grow: 1;">
-            <ui:Button text="Add New Sheet" name="AddBtn" style="flex-basis: 25px;" />
-            <ui:ScrollView name="ItemView" style="margin-top: 5px;" />
+            <ui:Button text="Add New Sheet" name="AddBtn" class="btn" />
+            <ui:ScrollView name="ItemView" style="margin-top: 5px; flex-grow: 1;" />
+            <ui:Button text="Update All" name="UpdateAllBtn" class="btn" style="align-self: auto;" />
         </ui:VisualElement>
         <ui:VisualElement name="RightPanel" style="flex-grow: 1;">
             <ui:VisualElement name="TitleContainer" style="flex-direction: row; flex-basis: 30px;">
