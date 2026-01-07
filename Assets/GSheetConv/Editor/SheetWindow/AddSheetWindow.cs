@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using GSheetConv.Editor.SheetWindow;
 using GSheetConv.Runtime;
 using UnityEditor;
@@ -246,18 +247,25 @@ public class AddSheetWindow : EditorWindow
             if (item.name.ToUpper() == title.ToUpper())
             {
                 _isTitleValid = false;
-                _duplicateBtn.text = InvalidText;
-                _duplicateBtn.AddToClassList(InvalidClass);
-                _addBtn.SetEnabled(false);
                 break;
             }
         }
+        
+        _isTitleValid = _isTitleValid && !string.IsNullOrEmpty(title);
+        string safeName = Regex.Replace(title, @"[^A-Za-z0-9]", "");
+        _isTitleValid = _isTitleValid && (title == safeName);
 
         if (_isTitleValid)
         {
             _duplicateBtn.text = ValidText;
             _duplicateBtn.AddToClassList(ValidClass);
             _addBtn.SetEnabled(_isUrlValid && _isTitleValid);
+        }
+        else
+        {
+            _duplicateBtn.text = InvalidText;
+            _duplicateBtn.AddToClassList(InvalidClass);
+            _addBtn.SetEnabled(false);
         }
     }
 

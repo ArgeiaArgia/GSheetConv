@@ -12,6 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b8c67e0d77c412f9b6fa0edc2c22df7, type: 3}
   m_Name: CSVListSO
   m_EditorClassIdentifier: 
-  csvItems:
-  - {fileID: 11400000, guid: 30f9e049d7f954942ad1fdaf6bd69a6b, type: 2}
-  - {fileID: 11400000, guid: ff95065dabe0c1d4ba9198560592399f, type: 2}
+  csvItems: []

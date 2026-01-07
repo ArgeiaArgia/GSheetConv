@@ -7,7 +7,7 @@ namespace TestCode
     [CreateAssetMenu(fileName = "TI", menuName = "TestCode/TI", order = 0)]
     public class TI : ScriptableObject
     {
-        [TableInject(CSVItemEnum.TTT,"2","linkinpark")]
+        // [TableInject(CSVItemEnum.TTT,"2","linkinpark")]
         public string bandName;
     }
 }
