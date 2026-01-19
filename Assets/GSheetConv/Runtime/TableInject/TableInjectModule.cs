@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using UnityEditor;
 using UnityEngine;
 using Object = System.Object;
 
@@ -29,9 +30,8 @@ namespace GSheetConv.Runtime.TableInject
 
                     if (convertedValue != null)
                     {
-                        // 현재 값과 비교하여 다를 때만 할당 (성능 최적화 핵심)
                         object currentValue = field.GetValue(injectable);
-                        if (!object.Equals(currentValue, convertedValue))
+                        if (!Equals(currentValue, convertedValue))
                         {
                             field.SetValue(injectable, convertedValue);
                             isModified = true;
@@ -49,13 +49,25 @@ namespace GSheetConv.Runtime.TableInject
                 if (targetType == typeof(string)) return value;
                 if (targetType == typeof(int)) return int.Parse(value);
                 if (targetType == typeof(float)) return float.Parse(value);
+                if (targetType == typeof(double)) return double.Parse(value);
                 if (targetType == typeof(bool)) return bool.Parse(value);
+                if (targetType.IsEnum) return Enum.Parse(targetType, value);
+                if (targetType == typeof(Sprite)) return GetAssetFromPath<Sprite>(value);
+                if (targetType == typeof(AudioClip)) return GetAssetFromPath<AudioClip>(value);
+                if (targetType == typeof(Material)) return GetAssetFromPath<Material>(value);
+                if (targetType == typeof(Texture2D)) return GetAssetFromPath<Texture2D>(value);
             }
             catch (Exception e)
             {
                 Debug.LogError($"Conversion failed: {value} to {targetType.Name}. Error: {e.Message}");
             }
             return null;
+        }
+
+        private static T GetAssetFromPath<T>(string path) where T : UnityEngine.Object
+        {
+            var asset = AssetDatabase.LoadAssetAtPath("Assets/" + path, typeof(T));
+            return asset as T;
         }
     }
 }
