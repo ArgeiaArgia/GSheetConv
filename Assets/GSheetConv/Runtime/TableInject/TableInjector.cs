@@ -3,19 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
 namespace GSheetConv.Runtime.TableInject
 {
-    [DefaultExecutionOrder(-10)]
+    [DefaultExecutionOrder(-100)]
+    [ExecuteAlways]
     public class TableInjector : MonoBehaviour
     {
         [SerializeField] private CSVListSO _csvList = null;
-
         Dictionary<CSVItemEnum, CSVItemSO> _csvItemDict = new Dictionary<CSVItemEnum, CSVItemSO>();
 
-        private void Awake()
+        private void OnEnable()
         {
+            InitializeInjectables();
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            InitializeInjectables();
+        }
+
+        [ContextMenu("Initialize Injectables")]
+        private void InitializeInjectables()
+        {
+            if (_csvList == null) return;
+
+            _csvItemDict.Clear();
             foreach (var csvItem in _csvList.csvItems)
             {
                 _csvItemDict.TryAdd(csvItem.csvItemEnum, csvItem);

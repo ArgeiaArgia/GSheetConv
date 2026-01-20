@@ -46,7 +46,7 @@ namespace GSheetConv.Runtime
                         $"CSVItemSO: Key index '{keyIndex}' is out of range for the row. Skipping this row.");
                     continue;
                 }
-                keys.Add(row[keyIndex]);
+                keys.Add(row[keyIndex].ToUpper());
             }
         }
 
@@ -82,7 +82,8 @@ namespace GSheetConv.Runtime
             int rowIndex = keys.IndexOf(key);
             if (rowIndex == -1)
             {
-                Debug.LogError($"CSVItemSO: Key '{key}' does not exist.");
+                Debug.LogError($"CSVItemSO: Key '{key}' does not exist." +
+                               $"Available keys: {string.Join(", ", keys)}");
                 return null;
             }
             var row = rows[rowIndex].Split(',');
